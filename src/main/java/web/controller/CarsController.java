@@ -25,13 +25,18 @@ public class CarsController {
     public String showCars(ModelMap model, @RequestParam(name = "count", defaultValue = "5") String count) {
 
         List<Car> cars = carService.addCars();
+        model.addAttribute("cars", carService.getCars(cars, Integer.parseInt(count)));
 
+        /*
         if (Integer.parseInt(count) < 5) {
             model.addAttribute("cars", carService.getCars(cars, Integer.parseInt(count)));
         }
         else {
             model.addAttribute("cars", cars);
         }
+        */
+
+
         return "cars";
     }
 }
